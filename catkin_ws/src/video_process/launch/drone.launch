@@ -1,0 +1,6 @@
+<launch>
+		<!--commented include file="$(find my_vision_to_mavros)/launch/t265_all_nodes.launch"/-->
+		<node name="crackdetection" pkg="video_process" type="crackdetection" output="screen"/>
+		<node name="beeper" pkg="video_process" type="beeper" output="screen"/>
+		<node name="control" pkg="video_process" type="control" output="screen"/>
+</launch>

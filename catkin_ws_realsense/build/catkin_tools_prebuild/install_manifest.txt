@@ -1,0 +1,13 @@
+/home/pi/catkin_ws_realsense/install/_setup_util.py
+/home/pi/catkin_ws_realsense/install/env.sh
+/home/pi/catkin_ws_realsense/install/setup.bash
+/home/pi/catkin_ws_realsense/install/local_setup.bash
+/home/pi/catkin_ws_realsense/install/setup.sh
+/home/pi/catkin_ws_realsense/install/local_setup.sh
+/home/pi/catkin_ws_realsense/install/setup.zsh
+/home/pi/catkin_ws_realsense/install/local_setup.zsh
+/home/pi/catkin_ws_realsense/install/.rosinstall
+/home/pi/catkin_ws_realsense/install/lib/pkgconfig/catkin_tools_prebuild.pc
+/home/pi/catkin_ws_realsense/install/share/catkin_tools_prebuild/cmake/catkin_tools_prebuildConfig.cmake
+/home/pi/catkin_ws_realsense/install/share/catkin_tools_prebuild/cmake/catkin_tools_prebuildConfig-version.cmake
+/home/pi/catkin_ws_realsense/install/share/catkin_tools_prebuild/package.xml

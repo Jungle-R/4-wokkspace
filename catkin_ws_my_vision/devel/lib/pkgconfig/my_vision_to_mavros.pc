@@ -1,0 +1,8 @@
+prefix=/home/pi/catkin_ws_my_vision/devel
+
+Name: my_vision_to_mavros
+Description: Description of my_vision_to_mavros
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
