@@ -22,6 +22,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/pi/catkin_ws_mavros/src/mavros/mavros_extras/src/plugins/rangefinder.cpp" "/home/pi/catkin_ws_mavros/build/mavros_extras/CMakeFiles/mavros_extras.dir/src/plugins/rangefinder.cpp.o"
   "/home/pi/catkin_ws_mavros/src/mavros/mavros_extras/src/plugins/trajectory.cpp" "/home/pi/catkin_ws_mavros/build/mavros_extras/CMakeFiles/mavros_extras.dir/src/plugins/trajectory.cpp.o"
   "/home/pi/catkin_ws_mavros/src/mavros/mavros_extras/src/plugins/vibration.cpp" "/home/pi/catkin_ws_mavros/build/mavros_extras/CMakeFiles/mavros_extras.dir/src/plugins/vibration.cpp.o"
+  "/home/pi/catkin_ws_mavros/src/mavros/mavros_extras/src/plugins/virtual_compass.cpp" "/home/pi/catkin_ws_mavros/build/mavros_extras/CMakeFiles/mavros_extras.dir/src/plugins/virtual_compass.cpp.o"
   "/home/pi/catkin_ws_mavros/src/mavros/mavros_extras/src/plugins/vision_pose_estimate.cpp" "/home/pi/catkin_ws_mavros/build/mavros_extras/CMakeFiles/mavros_extras.dir/src/plugins/vision_pose_estimate.cpp.o"
   "/home/pi/catkin_ws_mavros/src/mavros/mavros_extras/src/plugins/vision_speed_estimate.cpp" "/home/pi/catkin_ws_mavros/build/mavros_extras/CMakeFiles/mavros_extras.dir/src/plugins/vision_speed_estimate.cpp.o"
   "/home/pi/catkin_ws_mavros/src/mavros/mavros_extras/src/plugins/wheel_odometry.cpp" "/home/pi/catkin_ws_mavros/build/mavros_extras/CMakeFiles/mavros_extras.dir/src/plugins/wheel_odometry.cpp.o"

@@ -58,7 +58,7 @@ myros_test/CMakeFiles/myros_test_generate_messages_eus: /home/pi/catkin_ws/devel
 
 /home/pi/catkin_ws/devel/share/roseus/ros/myros_test/manifest.l: /opt/ros/melodic/lib/geneus/gen_eus.py
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/pi/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating EusLisp manifest code for myros_test"
-	cd /home/pi/catkin_ws/build/myros_test && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/geneus/cmake/../../../lib/geneus/gen_eus.py -m -o /home/pi/catkin_ws/devel/share/roseus/ros/myros_test myros_test geometry_msgs std_msgs
+	cd /home/pi/catkin_ws/build/myros_test && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/geneus/cmake/../../../lib/geneus/gen_eus.py -m -o /home/pi/catkin_ws/devel/share/roseus/ros/myros_test myros_test mavros_msgs geometry_msgs std_msgs geographic_msgs
 
 myros_test_generate_messages_eus: myros_test/CMakeFiles/myros_test_generate_messages_eus
 myros_test_generate_messages_eus: /home/pi/catkin_ws/devel/share/roseus/ros/myros_test/manifest.l

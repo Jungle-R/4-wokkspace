@@ -62,4 +62,8 @@
 	<class name="mount_control" type="mavros::extra_plugins::MountControlPlugin" base_class_type="mavros::plugin::PluginBase">
 		<description>Send Mission command to control a camera or a antenna mount.</description>
 	</class>
+	<class name="virtual_compass" type="mavros::extra_plugins::VirtualCompassPlugin" base_class_type="mavros::plugin::PluginBase">
+		<description>Send virtual mag to FCU.</description>
+	</class>
+
 </library>

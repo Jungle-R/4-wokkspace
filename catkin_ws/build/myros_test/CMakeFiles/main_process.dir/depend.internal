@@ -9,6 +9,9 @@ myros_test/CMakeFiles/main_process.dir/src/main_process.cpp.o
  /home/pi/catkin_ws_mavros/install/include/mavros_msgs/CommandHome.h
  /home/pi/catkin_ws_mavros/install/include/mavros_msgs/CommandHomeRequest.h
  /home/pi/catkin_ws_mavros/install/include/mavros_msgs/CommandHomeResponse.h
+ /home/pi/catkin_ws_mavros/install/include/mavros_msgs/CommandLong.h
+ /home/pi/catkin_ws_mavros/install/include/mavros_msgs/CommandLongRequest.h
+ /home/pi/catkin_ws_mavros/install/include/mavros_msgs/CommandLongResponse.h
  /home/pi/catkin_ws_mavros/install/include/mavros_msgs/CommandTOL.h
  /home/pi/catkin_ws_mavros/install/include/mavros_msgs/CommandTOLRequest.h
  /home/pi/catkin_ws_mavros/install/include/mavros_msgs/CommandTOLResponse.h

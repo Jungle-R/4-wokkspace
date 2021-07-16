@@ -20,6 +20,7 @@ vision_to_mavros/CMakeFiles/my_vision_to_mavros_node.dir/src/vision_to_mavros.cp
 vision_to_mavros/CMakeFiles/my_vision_to_mavros_node.dir/src/vision_to_mavros.cpp.o: /opt/ros/melodic/include/geometry_msgs/Vector3.h
 vision_to_mavros/CMakeFiles/my_vision_to_mavros_node.dir/src/vision_to_mavros.cpp.o: /opt/ros/melodic/include/geometry_msgs/Vector3Stamped.h
 vision_to_mavros/CMakeFiles/my_vision_to_mavros_node.dir/src/vision_to_mavros.cpp.o: /opt/ros/melodic/include/nav_msgs/Odometry.h
+vision_to_mavros/CMakeFiles/my_vision_to_mavros_node.dir/src/vision_to_mavros.cpp.o: /opt/ros/melodic/include/nav_msgs/Path.h
 vision_to_mavros/CMakeFiles/my_vision_to_mavros_node.dir/src/vision_to_mavros.cpp.o: /opt/ros/melodic/include/ros/advertise_options.h
 vision_to_mavros/CMakeFiles/my_vision_to_mavros_node.dir/src/vision_to_mavros.cpp.o: /opt/ros/melodic/include/ros/advertise_service_options.h
 vision_to_mavros/CMakeFiles/my_vision_to_mavros_node.dir/src/vision_to_mavros.cpp.o: /opt/ros/melodic/include/ros/assert.h

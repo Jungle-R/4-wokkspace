@@ -8,6 +8,9 @@ myros_test/CMakeFiles/main_process.dir/src/main_process.cpp.o: /home/pi/catkin_w
 myros_test/CMakeFiles/main_process.dir/src/main_process.cpp.o: /home/pi/catkin_ws_mavros/install/include/mavros_msgs/CommandHome.h
 myros_test/CMakeFiles/main_process.dir/src/main_process.cpp.o: /home/pi/catkin_ws_mavros/install/include/mavros_msgs/CommandHomeRequest.h
 myros_test/CMakeFiles/main_process.dir/src/main_process.cpp.o: /home/pi/catkin_ws_mavros/install/include/mavros_msgs/CommandHomeResponse.h
+myros_test/CMakeFiles/main_process.dir/src/main_process.cpp.o: /home/pi/catkin_ws_mavros/install/include/mavros_msgs/CommandLong.h
+myros_test/CMakeFiles/main_process.dir/src/main_process.cpp.o: /home/pi/catkin_ws_mavros/install/include/mavros_msgs/CommandLongRequest.h
+myros_test/CMakeFiles/main_process.dir/src/main_process.cpp.o: /home/pi/catkin_ws_mavros/install/include/mavros_msgs/CommandLongResponse.h
 myros_test/CMakeFiles/main_process.dir/src/main_process.cpp.o: /home/pi/catkin_ws_mavros/install/include/mavros_msgs/CommandTOL.h
 myros_test/CMakeFiles/main_process.dir/src/main_process.cpp.o: /home/pi/catkin_ws_mavros/install/include/mavros_msgs/CommandTOLRequest.h
 myros_test/CMakeFiles/main_process.dir/src/main_process.cpp.o: /home/pi/catkin_ws_mavros/install/include/mavros_msgs/CommandTOLResponse.h

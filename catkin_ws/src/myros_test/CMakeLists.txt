@@ -16,6 +16,10 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
   turtlesim
   geometry_msgs
+  tf2
+  tf2_ros
+  tf2_geometry_msgs
+  geographic_msgs
 )
 find_package(OpenCV REQUIRED)
 ## System dependencies are found with CMake's conventions
@@ -75,9 +79,10 @@ find_package(OpenCV REQUIRED)
 ## Generate added messages and services with any dependencies listed here
  generate_messages(
    DEPENDENCIES
-  # mavros_msgs#   sensor_msgs#   std_msgs
+   mavros_msgs#   sensor_msgs#
   geometry_msgs
   std_msgs
+  geographic_msgs
  )
 
 ################################################
@@ -158,9 +163,12 @@ include_directories(
 #   ${catkin_LIBRARIES}
 # )
  add_executable(main_process src/main_process.cpp)
-  add_executable(star_detection src/star_detection.cpp) 
+ add_executable(star_detection src/star_detection.cpp) 
  add_dependencies(main_process ${PROJECT_NAME}_generate_messages_cpp)
  add_dependencies(star_detection ${PROJECT_NAME}_generate_messages_cpp)
+ add_executable(virtual_compass src/virtual_compass.cpp)
+ add_dependencies(virtual_compass ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS}) 
+   
  target_link_libraries(main_process
    ${catkin_LIBRARIES}
    ${OpenCV_LIBRARIES}
@@ -173,6 +181,11 @@ include_directories(
    -lwiringPi
    -lpthread
  )
+ 
+ target_link_libraries(virtual_compass
+${catkin_LIBRARIES}
+${OpenCV_LIBRARIES}
+)
 #############
 ## Install ##
 #############
@@ -187,6 +200,9 @@ include_directories(
 #   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 # )
 
+
+
+
 ## Mark executables for installation
 ## See http://docs.ros.org/melodic/api/catkin/html/howto/format1/building_executables.html
 # install(TARGETS ${PROJECT_NAME}_node
@@ -200,7 +216,9 @@ include_directories(
 #   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 #   RUNTIME DESTINATION ${CATKIN_GLOBAL_BIN_DESTINATION}
 # )
-
+install(TARGETS virtual_compass
+RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
 ## Mark cpp header files for installation
 # install(DIRECTORY include/${PROJECT_NAME}/
 #   DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}

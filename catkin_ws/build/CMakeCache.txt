@@ -370,6 +370,12 @@ _gtest_INCLUDES:FILEPATH=/usr/include/gtest/gtest.h
 //Path to a file.
 _gtest_SOURCES:FILEPATH=/usr/src/gtest/src/gtest.cc
 
+//The directory containing a CMake configuration file for actionlib.
+actionlib_DIR:PATH=/opt/ros/melodic/share/actionlib/cmake
+
+//The directory containing a CMake configuration file for actionlib_msgs.
+actionlib_msgs_DIR:PATH=/opt/ros/melodic/share/actionlib_msgs/cmake
+
 //The directory containing a CMake configuration file for catkin.
 catkin_DIR:PATH=/opt/ros/melodic/share/catkin/cmake
 
@@ -452,6 +458,9 @@ lib:FILEPATH=/opt/ros/melodic/lib/libxmlrpcpp.so
 //The directory containing a CMake configuration file for mavros_msgs.
 mavros_msgs_DIR:PATH=/home/pi/catkin_ws_mavros/install/share/mavros_msgs/cmake
 
+//The directory containing a CMake configuration file for message_filters.
+message_filters_DIR:PATH=/opt/ros/melodic/share/message_filters/cmake
+
 //The directory containing a CMake configuration file for message_generation.
 message_generation_DIR:PATH=/opt/ros/melodic/share/message_generation/cmake
 
@@ -476,6 +485,9 @@ roscpp_serialization_DIR:PATH=/opt/ros/melodic/share/roscpp_serialization/cmake
 //The directory containing a CMake configuration file for roscpp_traits.
 roscpp_traits_DIR:PATH=/opt/ros/melodic/share/roscpp_traits/cmake
 
+//The directory containing a CMake configuration file for rosgraph.
+rosgraph_DIR:PATH=/opt/ros/melodic/share/rosgraph/cmake
+
 //The directory containing a CMake configuration file for rosgraph_msgs.
 rosgraph_msgs_DIR:PATH=/opt/ros/melodic/share/rosgraph_msgs/cmake
 
@@ -493,6 +505,21 @@ std_msgs_DIR:PATH=/opt/ros/melodic/share/std_msgs/cmake
 
 //The directory containing a CMake configuration file for std_srvs.
 std_srvs_DIR:PATH=/opt/ros/melodic/share/std_srvs/cmake
+
+//The directory containing a CMake configuration file for tf2.
+tf2_DIR:PATH=/opt/ros/melodic/share/tf2/cmake
+
+//The directory containing a CMake configuration file for tf2_geometry_msgs.
+tf2_geometry_msgs_DIR:PATH=/opt/ros/melodic/share/tf2_geometry_msgs/cmake
+
+//The directory containing a CMake configuration file for tf2_msgs.
+tf2_msgs_DIR:PATH=/opt/ros/melodic/share/tf2_msgs/cmake
+
+//The directory containing a CMake configuration file for tf2_py.
+tf2_py_DIR:PATH=/opt/ros/melodic/share/tf2_py/cmake
+
+//The directory containing a CMake configuration file for tf2_ros.
+tf2_ros_DIR:PATH=/opt/ros/melodic/share/tf2_ros/cmake
 
 //The directory containing a CMake configuration file for turtlesim.
 turtlesim_DIR:PATH=/opt/ros/melodic/share/turtlesim/cmake

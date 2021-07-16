@@ -119,13 +119,18 @@ setpoint_velocity:
 #    send_tf: false
 #    sensor_position: {x:  0.0, y:  0.0, z: 0.0}
 
+# odom
+#odometry:
+#  fcu:
+ #   odom_parent_id_des: "map"    # desired parent frame rotation of the FCU's odometry
+ #   odom_child_id_des: "base_link"    # desired child frame rotation of the FCU's odometry
 
 
 # vision_pose_estimate
 vision_pose:
   tf:
     listen: false           # enable tf listener (disable topic subscribers)
-    frame_id: "map"
+    frame_id: "odom"
     child_frame_id: "vision_estimate"
     rate_limit: 10.0
 

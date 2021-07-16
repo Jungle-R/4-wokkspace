@@ -1722,7 +1722,7 @@ mavros_msgs/Mavlink.h
 mavconn/mavlink_dialect.h
 -
 
-/home/pi/catkin_ws_mavros/src/mavros/mavros_extras/src/plugins/vision_speed_estimate.cpp
+/home/pi/catkin_ws_mavros/src/mavros/mavros_extras/src/plugins/virtual_compass.cpp
 mavros/mavros_plugin.h
 -
 geometry_msgs/TwistStamped.h

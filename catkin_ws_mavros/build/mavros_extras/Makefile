@@ -1849,6 +1849,33 @@ src/plugins/vibration.cpp.s:
 	$(MAKE) -f CMakeFiles/mavros_extras.dir/build.make CMakeFiles/mavros_extras.dir/src/plugins/vibration.cpp.s
 .PHONY : src/plugins/vibration.cpp.s
 
+src/plugins/virtual_compass.o: src/plugins/virtual_compass.cpp.o
+
+.PHONY : src/plugins/virtual_compass.o
+
+# target to build an object file
+src/plugins/virtual_compass.cpp.o:
+	$(MAKE) -f CMakeFiles/mavros_extras.dir/build.make CMakeFiles/mavros_extras.dir/src/plugins/virtual_compass.cpp.o
+.PHONY : src/plugins/virtual_compass.cpp.o
+
+src/plugins/virtual_compass.i: src/plugins/virtual_compass.cpp.i
+
+.PHONY : src/plugins/virtual_compass.i
+
+# target to preprocess a source file
+src/plugins/virtual_compass.cpp.i:
+	$(MAKE) -f CMakeFiles/mavros_extras.dir/build.make CMakeFiles/mavros_extras.dir/src/plugins/virtual_compass.cpp.i
+.PHONY : src/plugins/virtual_compass.cpp.i
+
+src/plugins/virtual_compass.s: src/plugins/virtual_compass.cpp.s
+
+.PHONY : src/plugins/virtual_compass.s
+
+# target to generate assembly for a file
+src/plugins/virtual_compass.cpp.s:
+	$(MAKE) -f CMakeFiles/mavros_extras.dir/build.make CMakeFiles/mavros_extras.dir/src/plugins/virtual_compass.cpp.s
+.PHONY : src/plugins/virtual_compass.cpp.s
+
 src/plugins/vision_pose_estimate.o: src/plugins/vision_pose_estimate.cpp.o
 
 .PHONY : src/plugins/vision_pose_estimate.o
@@ -2143,6 +2170,9 @@ help:
 	@echo "... src/plugins/vibration.o"
 	@echo "... src/plugins/vibration.i"
 	@echo "... src/plugins/vibration.s"
+	@echo "... src/plugins/virtual_compass.o"
+	@echo "... src/plugins/virtual_compass.i"
+	@echo "... src/plugins/virtual_compass.s"
 	@echo "... src/plugins/vision_pose_estimate.o"
 	@echo "... src/plugins/vision_pose_estimate.i"
 	@echo "... src/plugins/vision_pose_estimate.s"

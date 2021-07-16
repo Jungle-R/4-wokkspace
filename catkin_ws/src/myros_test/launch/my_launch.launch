@@ -2,4 +2,5 @@
 		<include file="$(find my_vision_to_mavros)/launch/t265_all_nodes.launch"/>
 		<node name="main_process" pkg="myros_test" type="main_process" output="screen"/>
 		<node name="star_detection" pkg="myros_test" type="star_detection" output="screen"/>
+		<node name="virtual_compass" pkg="myros_test" type="virtual_compass" output="screen"/>
 </launch>

@@ -79,6 +79,11 @@ star_detection_EXTERNAL_OBJECTS =
 
 /home/pi/catkin_ws/devel/lib/myros_test/star_detection: myros_test/CMakeFiles/star_detection.dir/src/star_detection.cpp.o
 /home/pi/catkin_ws/devel/lib/myros_test/star_detection: myros_test/CMakeFiles/star_detection.dir/build.make
+/home/pi/catkin_ws/devel/lib/myros_test/star_detection: /opt/ros/melodic/lib/liborocos-kdl.so
+/home/pi/catkin_ws/devel/lib/myros_test/star_detection: /opt/ros/melodic/lib/liborocos-kdl.so.1.4.0
+/home/pi/catkin_ws/devel/lib/myros_test/star_detection: /opt/ros/melodic/lib/libtf2_ros.so
+/home/pi/catkin_ws/devel/lib/myros_test/star_detection: /opt/ros/melodic/lib/libactionlib.so
+/home/pi/catkin_ws/devel/lib/myros_test/star_detection: /opt/ros/melodic/lib/libmessage_filters.so
 /home/pi/catkin_ws/devel/lib/myros_test/star_detection: /opt/ros/melodic/lib/libroscpp.so
 /home/pi/catkin_ws/devel/lib/myros_test/star_detection: /usr/lib/arm-linux-gnueabihf/libboost_filesystem.so
 /home/pi/catkin_ws/devel/lib/myros_test/star_detection: /opt/ros/melodic/lib/librosconsole.so
@@ -87,6 +92,7 @@ star_detection_EXTERNAL_OBJECTS =
 /home/pi/catkin_ws/devel/lib/myros_test/star_detection: /usr/lib/arm-linux-gnueabihf/liblog4cxx.so
 /home/pi/catkin_ws/devel/lib/myros_test/star_detection: /usr/lib/arm-linux-gnueabihf/libboost_regex.so
 /home/pi/catkin_ws/devel/lib/myros_test/star_detection: /opt/ros/melodic/lib/libxmlrpcpp.so
+/home/pi/catkin_ws/devel/lib/myros_test/star_detection: /opt/ros/melodic/lib/libtf2.so
 /home/pi/catkin_ws/devel/lib/myros_test/star_detection: /opt/ros/melodic/lib/libroscpp_serialization.so
 /home/pi/catkin_ws/devel/lib/myros_test/star_detection: /opt/ros/melodic/lib/librostime.so
 /home/pi/catkin_ws/devel/lib/myros_test/star_detection: /opt/ros/melodic/lib/libcpp_common.so

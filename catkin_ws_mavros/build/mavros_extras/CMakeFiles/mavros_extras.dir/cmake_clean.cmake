@@ -20,6 +20,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/mavros_extras.dir/src/plugins/vision_speed_estimate.cpp.o"
   "CMakeFiles/mavros_extras.dir/src/plugins/wheel_odometry.cpp.o"
   "CMakeFiles/mavros_extras.dir/src/plugins/mount_control.cpp.o"
+  "CMakeFiles/mavros_extras.dir/src/plugins/virtual_compass.cpp.o"
   "/home/pi/catkin_ws_mavros/devel/.private/mavros_extras/lib/libmavros_extras.pdb"
   "/home/pi/catkin_ws_mavros/devel/.private/mavros_extras/lib/libmavros_extras.so"
 )

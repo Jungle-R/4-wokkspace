@@ -21,6 +21,8 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/home/pi/catkin_ws_mavros/install/include"
   "/opt/ros/melodic/include"
   "/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
+  "/opt/ros/melodic/share/orocos_kdl/cmake/../../../include"
+  "/usr/include/eigen3"
   "/usr/local/include/opencv4"
   )
 

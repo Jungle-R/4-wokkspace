@@ -79,6 +79,11 @@ main_process_EXTERNAL_OBJECTS =
 
 /home/pi/catkin_ws/devel/lib/myros_test/main_process: myros_test/CMakeFiles/main_process.dir/src/main_process.cpp.o
 /home/pi/catkin_ws/devel/lib/myros_test/main_process: myros_test/CMakeFiles/main_process.dir/build.make
+/home/pi/catkin_ws/devel/lib/myros_test/main_process: /opt/ros/melodic/lib/liborocos-kdl.so
+/home/pi/catkin_ws/devel/lib/myros_test/main_process: /opt/ros/melodic/lib/liborocos-kdl.so.1.4.0
+/home/pi/catkin_ws/devel/lib/myros_test/main_process: /opt/ros/melodic/lib/libtf2_ros.so
+/home/pi/catkin_ws/devel/lib/myros_test/main_process: /opt/ros/melodic/lib/libactionlib.so
+/home/pi/catkin_ws/devel/lib/myros_test/main_process: /opt/ros/melodic/lib/libmessage_filters.so
 /home/pi/catkin_ws/devel/lib/myros_test/main_process: /opt/ros/melodic/lib/libroscpp.so
 /home/pi/catkin_ws/devel/lib/myros_test/main_process: /usr/lib/arm-linux-gnueabihf/libboost_filesystem.so
 /home/pi/catkin_ws/devel/lib/myros_test/main_process: /opt/ros/melodic/lib/librosconsole.so
@@ -87,6 +92,7 @@ main_process_EXTERNAL_OBJECTS =
 /home/pi/catkin_ws/devel/lib/myros_test/main_process: /usr/lib/arm-linux-gnueabihf/liblog4cxx.so
 /home/pi/catkin_ws/devel/lib/myros_test/main_process: /usr/lib/arm-linux-gnueabihf/libboost_regex.so
 /home/pi/catkin_ws/devel/lib/myros_test/main_process: /opt/ros/melodic/lib/libxmlrpcpp.so
+/home/pi/catkin_ws/devel/lib/myros_test/main_process: /opt/ros/melodic/lib/libtf2.so
 /home/pi/catkin_ws/devel/lib/myros_test/main_process: /opt/ros/melodic/lib/libroscpp_serialization.so
 /home/pi/catkin_ws/devel/lib/myros_test/main_process: /opt/ros/melodic/lib/librostime.so
 /home/pi/catkin_ws/devel/lib/myros_test/main_process: /opt/ros/melodic/lib/libcpp_common.so
