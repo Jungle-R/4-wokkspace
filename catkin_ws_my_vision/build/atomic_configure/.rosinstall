@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/pi/catkin_ws_my_vision/devel/setup.sh

@@ -1,0 +1,6 @@
+devel_space: /home/pi/catkin_ws_mavros/devel
+install: true
+install_space: /home/pi/catkin_ws_mavros/install
+profile: default
+source_space: /home/pi/catkin_ws_mavros/src
+workspace: /home/pi/catkin_ws_mavros

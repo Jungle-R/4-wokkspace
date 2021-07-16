@@ -1,0 +1,16 @@
+/home/pi/catkin_ws_my_vision/install/_setup_util.py
+/home/pi/catkin_ws_my_vision/install/env.sh
+/home/pi/catkin_ws_my_vision/install/setup.bash
+/home/pi/catkin_ws_my_vision/install/local_setup.bash
+/home/pi/catkin_ws_my_vision/install/setup.sh
+/home/pi/catkin_ws_my_vision/install/local_setup.sh
+/home/pi/catkin_ws_my_vision/install/setup.zsh
+/home/pi/catkin_ws_my_vision/install/local_setup.zsh
+/home/pi/catkin_ws_my_vision/install/.rosinstall
+/home/pi/catkin_ws_my_vision/install/lib/pkgconfig/my_vision_to_mavros.pc
+/home/pi/catkin_ws_my_vision/install/share/my_vision_to_mavros/cmake/my_vision_to_mavrosConfig.cmake
+/home/pi/catkin_ws_my_vision/install/share/my_vision_to_mavros/cmake/my_vision_to_mavrosConfig-version.cmake
+/home/pi/catkin_ws_my_vision/install/share/my_vision_to_mavros/package.xml
+/home/pi/catkin_ws_my_vision/install/lib/my_vision_to_mavros/my_vision_to_mavros_node
+/home/pi/catkin_ws_my_vision/install/share/my_vision_to_mavros/launch/t265_tf_to_mavros.launch
+/home/pi/catkin_ws_my_vision/install/share/my_vision_to_mavros/launch/t265_all_nodes.launch

@@ -1,0 +1,1 @@
+/home/pi/catkin_ws_mavros/devel/./cmake.lock 98

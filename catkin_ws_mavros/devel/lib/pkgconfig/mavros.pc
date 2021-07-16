@@ -1,0 +1,8 @@
+prefix=/home/pi/catkin_ws_mavros/devel/.private/mavros
+
+Name: mavros
+Description: Description of mavros
+Version: 1.2.0
+Cflags: -I/home/pi/catkin_ws_mavros/src/mavros/mavros/include -I/usr/include -I/usr/include/eigen3
+Libs: -L${prefix}/lib -lmavros /usr/lib/arm-linux-gnueabihf/libboost_system.so /usr/lib/arm-linux-gnueabihf/libGeographic.so
+Requires: diagnostic_msgs diagnostic_updater eigen_conversions geographic_msgs geometry_msgs libmavconn mavros_msgs message_runtime nav_msgs pluginlib roscpp sensor_msgs std_msgs tf2_ros trajectory_msgs

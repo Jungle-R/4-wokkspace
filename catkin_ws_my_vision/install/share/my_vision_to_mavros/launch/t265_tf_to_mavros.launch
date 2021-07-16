@@ -1,0 +1,6 @@
+<launch>
+    <node pkg="my_vision_to_mavros" type="my_vision_to_mavros_node" name="t265_to_mavros" output="screen" >
+        <remap from="vision_speed" to="/mavros/vision_speed/speed_twist_cov" />
+	<remap from="camera_odom" to="/camera/odom/sample" />
+    </node>
+</launch>

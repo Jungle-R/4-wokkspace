@@ -1,0 +1,8 @@
+prefix=/home/pi/catkin_ws_mavros/devel/.private/libmavconn
+
+Name: libmavconn
+Description: Description of libmavconn
+Version: 1.2.0
+Cflags: -I/home/pi/catkin_ws_mavros/src/mavros/libmavconn/include -I/usr/include -I/home/pi/catkin_ws_mavros/install/include
+Libs: -L${prefix}/lib -lmavconn /usr/lib/arm-linux-gnueabihf/libboost_system.so /usr/lib/arm-linux-gnueabihf/libconsole_bridge.so.0.4
+Requires: 
