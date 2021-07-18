@@ -293,7 +293,7 @@ int main(int argc, char** argv)
 						temp_step++;
 					}
 				}
-				else if (++sleeptime >= 1 && temp_step) //2秒
+				else if (++sleeptime >= 40 && temp_step) //2秒
 				{
 					sleeptime = 0;
 					mavros_msgs::CommandLong Reset_Que_Cmd;
