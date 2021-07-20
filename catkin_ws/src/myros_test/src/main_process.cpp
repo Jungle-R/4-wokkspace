@@ -8,7 +8,7 @@
 #include <sensor_msgs/Range.h>
 #include <iostream>
 #include <stdio.h>
-#include <wiringPi.h>
+//#include <wiringPi.h>
 #include "opencv2/opencv.hpp"
 #include "ros/ros.h"
 #include "std_msgs/Int32.h"
@@ -19,61 +19,17 @@
 #include <tf/transform_broadcaster.h>
 #include   <sys/time.h>
 #include <pthread.h>
-pthread_mutex_t mutex_height;
-pthread_mutex_t mutex_cam_data;
+#include <mavros_msgs/State.h>
+
+
 pthread_mutex_t mutex_t265;
-pthread_mutex_t mutex_cvtomp;
+
+
 using namespace cv;
 using namespace std;
-//RFU XYZ
-//float x_goal[7]={3.90,3.90,1.05,1.05,3.90,3.90,0.0},
-//      y_goal[7]={0.1,0.80,0.73,1.25,1.65,2.40,2.40};
-//float x_goal[7]={3.90,3.90,0.90,0.90,3.90,3.90,0.0},
-//      y_goal[7]={0.1,0.70,0.70,1.65,1.65,2.40,2.40};
-//float x_goal[7]={1.1,1.1,2.3,2.3,3.3,3.7,0},
-//      y_goal[7]={0,2.5,2.5,0,0,2.35,2.50};
-float x_goal[7] = { 3.90,3.90,2.3,2.3,1.2,1.2,0.1 },
-y_goal[7] = { 0.1,2.25,2.4,0,0,2.5,2.50 };
-typedef enum POSITION_TARGET_TYPEMASK
-{
-	POSITION_TARGET_TYPEMASK_X_IGNORE = 1, /* Ignore position x | */
-	POSITION_TARGET_TYPEMASK_Y_IGNORE = 2, /* Ignore position y | */
-	POSITION_TARGET_TYPEMASK_Z_IGNORE = 4, /* Ignore position z | */
-	POSITION_TARGET_TYPEMASK_VX_IGNORE = 8, /* Ignore velocity x | */
-	POSITION_TARGET_TYPEMASK_VY_IGNORE = 16, /* Ignore velocity y | */
-	POSITION_TARGET_TYPEMASK_VZ_IGNORE = 32, /* Ignore velocity z | */
-	POSITION_TARGET_TYPEMASK_AX_IGNORE = 64, /* Ignore acceleration x | */
-	POSITION_TARGET_TYPEMASK_AY_IGNORE = 128, /* Ignore acceleration y | */
-	POSITION_TARGET_TYPEMASK_AZ_IGNORE = 256, /* Ignore acceleration z | */
-	POSITION_TARGET_TYPEMASK_FORCE_SET = 512, /* Use force instead of acceleration | */
-	POSITION_TARGET_TYPEMASK_YAW_IGNORE = 1024, /* Ignore yaw | */
-	POSITION_TARGET_TYPEMASK_YAW_RATE_IGNORE = 2048, /* Ignore yaw rate | */
-	POSITION_TARGET_TYPEMASK_ENUM_END = 2049, /*  | */
-} POSITION_TARGET_TYPEMASK;
-struct   timeval   start, stop;
-float Height = 0;//飞机高度
-float Height_init = 0;
-float x_distance = 0;
-float position_x = 0;//图像返回的数据
-float position_y = 50;
-float position_z = 1;
+
 float yaw_old = 0;
 float posz_t265 = 0;
-float front_dis = 0;//前置激光的距离数据
-float line_position_red = 0;//两个竿子的位置
-float line_position_green = 0;
-int height_flag = 1;
-//int yaw_alined_flag=0;
-int return_end_pitch = 0;
-int first_red_green = 0;
-int change_color = 0;
-Point2f init_position = Point2f(0, 0);
-Point2f now_position = Point2f(0, 0);
-vector<Point2f> crack_position;//裂纹位置
-Point2f plan_path[5] = { Point2f(0,0.9),Point2f(0.5,0.9),Point2f(0.5,0) };
-
-
-
 
 float posx_t265 = 0;
 float posy_t265 = 0;
@@ -84,46 +40,11 @@ float posy_t265_start = 0;
 float yaw_t265_start = 0;
 signed char state = -1;
 int temp_step = 0;
-bool video_ready = false;
-bool button_ready = false;
+
 bool t265_ready = false;
-char cvstate = 0;
 
-float xv_now = 0, xv_last = 0, yv_now = 0, yv_last = 0;
 
-int i = 0, iii = 0;
-int bz_x_1 = 0, bz_y_1 = 0, bz_2 = 0;
 
-float max_xy(float xx, float yy)
-{
-	if (xx >= yy) return xx;
-	else return yy;
-}
-float jdz(float jj)
-{
-	if (jj < 0) jj = jj * (-1);
-	return jj;
-}
-void sudu_xy(float xnow, float xgoal, float ynow, float ygoal, float sudu_xy[2])
-{
-	float x_v_a;
-	float y_v_a;
-	if (jdz(xgoal - xnow) > jdz(ygoal - ynow))
-	{
-		x_v_a = 0.3;
-		y_v_a = jdz(0.3 * (ygoal - ynow) / (xgoal - xnow));
-	}
-	else
-	{
-		y_v_a = 0.3;
-		x_v_a = jdz(0.3 * (xgoal - xnow) / (ygoal - ynow));
-	}
-	if (xgoal - xnow >= 0) sudu_xy[0] = x_v_a;
-	if (xgoal - xnow < 0) sudu_xy[0] = x_v_a * (-1);
-	if (ygoal - ynow >= 0) sudu_xy[1] = y_v_a;
-	if (ygoal - ynow < 0) sudu_xy[1] = y_v_a * (-1);
-}
-//返回高度的数据
 float constrain_float(float x, float bound)
 {
 	if (x > bound)
@@ -133,6 +54,11 @@ float constrain_float(float x, float bound)
 	else return x;
 }
 
+//返回高度的数据
+float Height = 0;//飞机高度
+float Height_init = 0;
+int height_flag = 1;
+pthread_mutex_t mutex_height;
 void pose_callback(const geometry_msgs::PoseStamped& msg)
 {
 	if (height_flag == 0)
@@ -150,6 +76,11 @@ void pose_callback(const geometry_msgs::PoseStamped& msg)
 }
 
 //图像返回的数据
+bool video_ready = false;
+float position_x = 0;//图像返回的数据
+float position_y = 50;
+float position_z = 1;
+pthread_mutex_t mutex_cam_data;
 void drone_callback(const geometry_msgs::PoseStamped& msg)
 {
 	video_ready = true;
@@ -161,7 +92,8 @@ void drone_callback(const geometry_msgs::PoseStamped& msg)
 	//	ROS_INFO("video:%.2f , %.2f", msg.pose.position.x, msg.pose.position.z);
 }
 
-
+char cvstate = 0;
+pthread_mutex_t mutex_cvtomp;
 void cvtomp_callback(const std_msgs::Byte& msg)
 {
 	pthread_mutex_lock(&mutex_cvtomp);
@@ -183,15 +115,14 @@ void camera_callback(const nav_msgs::Odometry& msg)
 	//		ROS_INFO("video:%.2f , %.2f ,%.2f", posx_t265,posy_t265,posz_t265);
 }
 
-
-
-
-//yaw数据
-//void finish_callback(const std_msgs::Bool& msg)
-//{
-//	button_ready=msg.data;
-////	ROS_INFO("video:%.2f , %.2f", msg.pose.position.x, msg.pose.position.y);
-//}
+mavros_msgs::State current_state;
+pthread_mutex_t mutex_State;
+void state_cb(const mavros_msgs::State::ConstPtr& msg)
+{
+	pthread_mutex_lock(&mutex_State);
+	current_state = *msg;
+	pthread_mutex_unlock(&mutex_State);
+}
 
 int sleeptime = 0;
 int move_count = 0;
@@ -200,45 +131,44 @@ unsigned int loop_timer = 0;
 int main(int argc, char** argv)
 {
 	ros::init(argc, argv, "main_process");
-	wiringPiSetup();
-	pinMode(0, OUTPUT);
-	digitalWrite(0, HIGH);
+//	wiringPiSetup(); 	pinMode(0, OUTPUT);  digitalWrite(0, HIGH); //树莓派
 	pthread_mutex_init(&mutex_height, NULL);
 	pthread_mutex_init(&mutex_cam_data, NULL);
 	pthread_mutex_init(&mutex_t265, NULL);
 	pthread_mutex_init(&mutex_cvtomp, NULL);
+	pthread_mutex_init(&mutex_State, NULL);
 
 	ros::NodeHandle node_obj;
-	ros::Publisher number_publisher2 = node_obj.advertise<mavros_msgs::PositionTarget>("/mavros/setpoint_raw/local", 10);//向飞控发送信息的话题
 	ros::Publisher number_publisher1 = node_obj.advertise<std_msgs::Byte>("/my_change_mode", 10);//向图像发送信息的话题
-	ros::Subscriber number_subscriber1 = node_obj.subscribe("/mavros/local_position/pose", 10, pose_callback);//高度的话题
 	ros::Subscriber number_subscriber2 = node_obj.subscribe("/mydrone", 10, drone_callback);//接收图像的数据的话题
-	ros::Subscriber number_subscriber3 = node_obj.subscribe("/camera/odom/sample", 10, camera_callback);//接收角度数据的话题
 	ros::Subscriber number_subscriber4 = node_obj.subscribe("/cvtomp", 10, cvtomp_callback);
-	ros::spinOnce();
-	ros::ServiceClient takeoff_client = node_obj.serviceClient<mavros_msgs::CommandTOL>("mavros/cmd/takeoff");
-	ros::ServiceClient landing_client = node_obj.serviceClient<mavros_msgs::CommandTOL>("mavros/cmd/land");
-	ros::ServiceClient set_mode_client = node_obj.serviceClient<mavros_msgs::SetMode>("mavros/set_mode");
-	ros::ServiceClient comand_long_client = node_obj.serviceClient<mavros_msgs::CommandLong>("mavros/cmd/command");	 //7/10 for test LJJ
 
+	ros::Subscriber number_subscriber3 = node_obj.subscribe("/camera/odom/sample", 10, camera_callback);//T265返回数据
+	ros::Subscriber number_subscriber1 = node_obj.subscribe("/mavros/local_position/pose", 10, pose_callback);//飞控返回 的位置 
+	ros::Subscriber state_sub = nh.subscribe<mavros_msgs::State>("mavros/state", 10, state_cb);//飞控返回的状态
+
+	ros::spinOnce();
+
+	ros::ServiceClient takeoff_client = node_obj.serviceClient<mavros_msgs::CommandTOL>("mavros/cmd/takeoff");//起飞
+	ros::ServiceClient set_mode_client = node_obj.serviceClient<mavros_msgs::SetMode>("mavros/set_mode"); //进入35模式
+	ros::Publisher number_publisher2 = node_obj.advertise<mavros_msgs::PositionTarget>("/mavros/setpoint_raw/local", 10);//向飞控发送命令
+	ros::ServiceClient comand_long_client = node_obj.serviceClient<mavros_msgs::CommandLong>("mavros/cmd/command");	 //CMD命令
+	ros::ServiceClient landing_client = node_obj.serviceClient<mavros_msgs::CommandTOL>("mavros/cmd/land"); //降落
 
 	ros::spinOnce();
 	height_flag = 0;
-	//解锁
+
 	ros::Rate rate(200);
 	mavros_msgs::PositionTarget msg_velocity;
 	std_msgs::Byte mptocv;
 	mptocv.data = 1;
-	//	int count=0;
-	//	float start_now_diff_yaw;
+
 	ros::AsyncSpinner spinner(3);
 	spinner.start();
 
-
 	while (ros::ok())
 	{
-
-		//	ROS_INFO("loop_timer  [%d]",loop_timer);		
+	
 		if (++loop_timer >= 10)
 		{
 			pthread_mutex_lock(&mutex_cam_data);
@@ -260,7 +190,8 @@ int main(int argc, char** argv)
 
 			switch (state)
 			{
-				ROS_INFO("State =  [%d]", state);
+
+			//	ROS_INFO("State =  [%d]", state);
 
 			case -1:
 			{
@@ -278,7 +209,7 @@ int main(int argc, char** argv)
 			}
 			break;
 
-			//重启飞控
+			//重启飞控、、
 			case 0:
 			{
 				if (++sleeptime >= 20 && temp_step == 0) //秒数改
@@ -318,7 +249,7 @@ int main(int argc, char** argv)
 			}
 			break;
 
-			//解锁
+			//
 			case 1:
 			{
 				if (++sleeptime >= 20) //足够长的时间
@@ -356,8 +287,8 @@ int main(int argc, char** argv)
 				state = 2;
 			}
 			break;
-			//定高，若高度到了设定值，则下一步
 
+			//定高，若高度到了设定值，则下一步
 			case 3:
 			{
 				if (posz_t265_local > 0.1)
@@ -370,143 +301,24 @@ int main(int argc, char** argv)
 					state = 3;
 			}
 			break;
-			//wait & send command<go to the top>
+
 			case 4:
 			{
-				if (++sleeptime >= 300)    //15sec
-				{
-					sleeptime = 0;
-					//yaw_alined_flag=0;
-					msg_velocity.coordinate_frame = 12;
-					msg_velocity.type_mask = 1 | 2 | 4 | 64 | 128 | 256 | 512 | 1024 | 2048;
-					msg_velocity.velocity.x = 0.1;
-					msg_velocity.velocity.y = 0;
-					msg_velocity.velocity.z = 0;
-					//msg_velocity.yaw=0;
-					number_publisher2.publish(msg_velocity);
-					//open the camera
-					mptocv.data = 1;
-					number_publisher1.publish(mptocv);
-					state = 8;  //***********************************************LJJ
-					ROS_INFO("State 5");
-				}
-				else
-					state = 4;
+				state = 4;
 			}
 			break;
 
-			//judge whether finished or not
 			case 5:
 			{
-				//cvstate=2;
-
-				if (cvstate == 2)
-				{
-					float su_xy[2];
-					msg_velocity.type_mask = 1 | 2 | 4 | 64 | 128 | 256 | 512 | 1024 | 2048;
-					sudu_xy(posx_t265_local, x_goal[iii], posy_t265_local, y_goal[iii], su_xy);
-
-					msg_velocity.velocity.x = su_xy[0];
-					msg_velocity.velocity.y = su_xy[1];
-					msg_velocity.velocity.z = 0;
-					//number_publisher2.publish(msg_velocity);
-					if (jdz(posx_t265_local - x_goal[iii]) <= 0.1) bz_x_1 = 2;
-
-					if (jdz(posy_t265_local - y_goal[iii]) <= 0.1)  bz_y_1 = 2;
-					if ((bz_y_1 == 2) && (bz_x_1 == 2))
-					{
-						msg_velocity.type_mask = 1 | 2 | 4 | 64 | 128 | 256 | 512 | 1024 | 2048;
-						msg_velocity.velocity.x = 0;
-						msg_velocity.velocity.y = 0;
-						msg_velocity.velocity.z = 0;
-						//number_publisher2.publish(msg_velocity);
-						if (++sleeptime >= 30)
-						{
-							sleeptime = 0;
-							bz_2 = 2;
-						}
-					}
-					if (bz_2 == 2)
-					{                         //还要加上延时函数
-						iii = iii + 1;
-						bz_x_1 = 0;
-						bz_y_1 = 0;
-						bz_2 = 0;
-					}
-					if (iii >= 7)
-					{
-						iii = 0;
-						//state=6;
-						state = 7;
-						ROS_INFO("State 6");
-						mptocv.data = 2;
-						//number_publisher1.publish(mptocv);
-					}
-				}
-
-
-				else if (cvstate == 4)
-				{
-					msg_velocity.type_mask = 1 | 2 | 4 | 64 | 128 | 256 | 512 | 1024 | 2048;
-					msg_velocity.velocity.x = goal_x_local;
-					msg_velocity.velocity.y = goal_y_local;
-					//printf("XXXXXXX:%.5f;YYYYYYY:%.5f\n",msg_velocity.velocity.x,msg_velocity.velocity.y);
-					msg_velocity.velocity.z = 0;
-					//number_publisher2.publish(msg_velocity);
-				}
-
-				else
-					state = 5;
-
-				if (msg_velocity.velocity.x != 0)
-					xv_now = msg_velocity.velocity.x;
-				else
-					xv_now = 999.0;
-
-				if (msg_velocity.velocity.y != 0)
-					yv_now = msg_velocity.velocity.y;
-				else
-					yv_now = 999.0;
-
-				printf("X_X_V:%.5f,,,Y_Y_V:%.5f,,,iii:%d\n", msg_velocity.velocity.x, msg_velocity.velocity.y, iii);
-				if (((jdz((xv_now - xv_last) / xv_now)) >= 0.03) || ((jdz((yv_now - yv_last) / yv_now)) >= 0.03) || (xv_now * xv_last < 0) || (yv_now * yv_last < 0))
-				{
-					number_publisher2.publish(msg_velocity);
-					xv_last = xv_now;
-					yv_last = yv_now;
-				}
+				state = 5;
 			}
 			break;
 
 
 
-			//wait&open the camera
 			case 6:
 			{
-				if (cvstate == 10)
-				{
-					msg_velocity.type_mask = 1 | 2 | 4 | 64 | 128 | 256 | 512 | 2048;
-					msg_velocity.velocity.x = goal_x_local;
-					msg_velocity.velocity.y = goal_y_local;
-					msg_velocity.velocity.z = 0;
-					number_publisher2.publish(msg_velocity);
-				}
-				//延时在图像那边
-				else if (cvstate == 11)
-				{
-					msg_velocity.type_mask = 8 | 16 | 32 | 64 | 128 | 256 | 512 | 2048;
-					msg_velocity.position.x = -0.5;
-					msg_velocity.position.y = 0;
-					msg_velocity.position.z = 0;
-					number_publisher2.publish(msg_velocity);
-					state = 7;
-					ROS_INFO("State 7");
-					mptocv.data = 50;
-					number_publisher1.publish(mptocv);
-				}
-
-				else
-					state = 6;
+				state = 6;
 			}
 			break;
 
@@ -557,11 +369,9 @@ int main(int argc, char** argv)
 				}
 			}
 			break;
-
 			}
 			loop_timer = 0;
 		}
-		//		ros::spinOnce();
 		rate.sleep();
 	}
 	return 0;
